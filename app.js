@@ -5,17 +5,21 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+var cors = require('cors');
 
 /* =======================
-    LOAD THE CONFIG
+LOAD THE CONFIG
 ==========================*/
 const config = require('./config')
 const port = process.env.PORT || 3000 
 
 /* =======================
-    EXPRESS CONFIGURATION
+EXPRESS CONFIGURATION
 ==========================*/
 const app = express()
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }));
 
 // parse JSON and url-encoded query
 app.use(bodyParser.urlencoded({extended: false}))
