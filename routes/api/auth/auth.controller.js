@@ -10,15 +10,30 @@ const User = require('../../../models/user')
 */
 
 exports.register = (req, res) => {
-    const { username, password } = req.body
+    const {  password,
+
+      firstName,
+    lastName,
+    emailAddress,
+    countryOfPractice,
+    lawFirmSize,
+    phoneNumber}  = req.body
+
     let newUser = null
 
     // create a new user if does not exist
     const create = (user) => {
         if(user) {
-            throw new Error('username exists')
+            throw new Error('Email Address exists')
         } else {
-            return User.create(username, password)
+            return User.create( password,
+
+                firstName,
+              lastName,
+              emailAddress,
+              countryOfPractice,
+              lawFirmSize,
+              phoneNumber)
         }
     }
 
@@ -54,7 +69,7 @@ exports.register = (req, res) => {
     }
 
     // check username duplication
-    User.findOneByUsername(username)
+    User.findOneByEmailAddress(emailAddress)
     .then(create)
     .then(count)
     .then(assign)
@@ -71,7 +86,14 @@ exports.register = (req, res) => {
 */
 
 exports.login = (req, res) => {
-    const {username, password} = req.body
+    const { password,
+
+        firstName,
+      lastName,
+      emailAddress,
+      countryOfPractice,
+      lawFirmSize,
+      phoneNumber} = req.body
     const secret = req.app.get('jwt-secret')
 
     // check the user info & generate the jwt
@@ -93,14 +115,14 @@ exports.login = (req, res) => {
                         secret, 
                         {
                             expiresIn: '7d',
-                            issuer: 'velopert.com',
+                            issuer: 'casemanagement',
                             subject: 'userInfo'
                         }, (err, token) => {
                             if (err) reject(err)
                             resolve(token) 
                         })
                 })
-                return p
+                return {user, ...p}
             } else {
                 throw new Error('login failed')
             }
@@ -123,7 +145,7 @@ exports.login = (req, res) => {
     }
 
     // find the user
-    User.findOneByUsername(username)
+    User.findOneByEmailAddress(emailAddress)
     .then(check)
     .then(respond)
     .catch(onError)

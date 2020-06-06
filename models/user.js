@@ -4,9 +4,15 @@ const crypto = require('crypto')
 const config = require('../config')
 
 const User = new Schema({
-    username: String,
+    firstName:String,
+    lastName: String,
+    emailAddress:{type:String, unique:true},
     password: String,
-    admin: { type: Boolean, default: false }
+    admin: { type: Boolean, default: false },
+    countryOfPractice:{type:String},
+    lawFirmSize:String,
+    phoneNumber:String
+
 })
 
 
@@ -16,13 +22,24 @@ const User = new Schema({
 
 
 // create new User document
-User.statics.create = function(username, password) {
+User.statics.create = function(password,
+
+    firstName,
+  lastName,
+  emailAddress,
+  countryOfPractice,
+  lawFirmSize,
+  phoneNumber) {
     const encrypted = crypto.createHmac('sha1', config.secret)
                       .update(password)
                       .digest('base64')
 
     const user = new this({
-        username,
+      firstName,
+    lastName,
+    emailAddress,
+    countryOfPractice,
+    lawFirmSize,
         password: encrypted
     })
 
@@ -31,9 +48,9 @@ User.statics.create = function(username, password) {
 }
 
 // find one user by using username
-User.statics.findOneByUsername = function(username) {
+User.statics.findOneByEmailAddress = function(emailAddress) {
     return this.findOne({
-        username
+        emailAddress
     }).exec()
 }
 
