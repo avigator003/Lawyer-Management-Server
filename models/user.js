@@ -11,7 +11,8 @@ const User = new Schema({
     admin: { type: Boolean, default: false },
     countryOfPractice:{type:String},
     lawFirmSize:String,
-    phoneNumber:String
+    phoneNumber:String,
+    blocked: {type: Boolean, default: false}
 
 })
 

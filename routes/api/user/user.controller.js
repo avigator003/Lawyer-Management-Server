@@ -6,11 +6,11 @@ const User = require('../../../models/user')
 
 exports.list = (req, res) => {
     // refuse if not an admin
-    if(!req.decoded.admin) {
-        return res.status(403).json({
-            message: 'you are not an admin'
-        })
-    }
+    // if(!req.decoded.admin) {
+    //     return res.status(403).json({
+    //         message: 'you are not an admin'
+    //     })
+    // }
 
     User.find({}, '-password').exec()
     .then(
