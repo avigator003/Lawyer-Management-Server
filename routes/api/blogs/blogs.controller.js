@@ -46,3 +46,16 @@ exports.showAll = (req, res) => {
 
         })
 }
+
+//View one
+exports.viewBlog = (req, res) => {
+
+    Blogs.findById(req.params.id).
+        then(data => {
+            res.status(200).json({status: true, message:"Blogs list fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
