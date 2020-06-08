@@ -23,13 +23,13 @@ const User = new Schema({
 
 // create new User document
 User.statics.create = function(password,
-
     firstName,
   lastName,
   emailAddress,
   countryOfPractice,
   lawFirmSize,
-  phoneNumber) {
+  phoneNumber,
+  admin) {
     const encrypted = crypto.createHmac('sha1', config.secret)
                       .update(password)
                       .digest('base64')
@@ -40,7 +40,8 @@ User.statics.create = function(password,
     emailAddress,
     countryOfPractice,
     lawFirmSize,
-        password: encrypted
+        password: encrypted,
+        admin
     })
 
     // return the Promise

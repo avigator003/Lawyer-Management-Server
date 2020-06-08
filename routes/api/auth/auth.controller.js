@@ -17,28 +17,33 @@ exports.register = (req, res) => {
     emailAddress,
     countryOfPractice,
     lawFirmSize,
-    phoneNumber}  = req.body
-
+    phoneNumber,admin}  = req.body
+    
+    // let admin = req.body.admin ? true:false
     let newUser = null
-
+    
     // create a new user if does not exist
     const create = (user) => {
         if(user) {
             throw new Error('Email Address exists')
         } else {
             return User.create( password,
-
                 firstName,
               lastName,
               emailAddress,
               countryOfPractice,
               lawFirmSize,
-              phoneNumber)
-        }
+              phoneNumber,
+              admin,
+              
+              )
+
+            }
     }
 
     // count the number of the user
     const count = (user) => {
+        console.log({user})
         newUser = user
         return User.count({}).exec()
     }
