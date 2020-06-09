@@ -49,7 +49,7 @@ exports.showAll = (req, res) => {
 
 //Block user
 exports.blockuser = (req, res) => {
-    User.findOneAndUpdate(req.params.id, {$set:{blocked: true}} ).
+    User.findByIdAndUpdate(req.params.id, {$set:{blocked: true}} ).
         then(data => {
             res.status(200).json({status: true, message:"Blocked user", data})
 
@@ -62,7 +62,7 @@ exports.blockuser = (req, res) => {
 //unBlock user
 exports.unblockuser = (req, res) => {
 
-    User.findOneAndUpdate(req.params.id, {$set:{blocked: false}} ).
+    User.findByIdAndUpdate(req.params.id, {$set:{blocked: false}} ).
         then(data => {
             res.status(200).json({status: true, message:"Blocked user", data})
 
