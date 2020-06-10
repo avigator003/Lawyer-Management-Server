@@ -1,4 +1,4 @@
-const Features = require('../../../models/Features')
+const Features = require('../../../models/features')
 
 
 // Create New List
