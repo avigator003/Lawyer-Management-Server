@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const crypto = require('crypto')
 const config = require('../config')
-
+const schemaOptions = {
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  };
 const User = new Schema({
     firstName:String,
     lastName: String,
@@ -14,7 +16,7 @@ const User = new Schema({
     phoneNumber:String,
     blocked: {type: Boolean, default: false}
 
-})
+}, schemaOptions)
 
 
 // crypto.createHmac('sha1', 'secret')
