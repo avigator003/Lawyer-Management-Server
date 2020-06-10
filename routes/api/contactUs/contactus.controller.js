@@ -1,4 +1,4 @@
-const ContactUs = require('../../../models/ContactUs')
+const ContactUs = require('../../../models/contactUs')
 
 
 // Create New List
