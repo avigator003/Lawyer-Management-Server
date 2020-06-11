@@ -16,7 +16,7 @@ exports.createList = (req, res) => {
             res.status(200).json({status: true, message:"Blogs list Saved", data})
 
         }).catch(error => {
-        res.status(200).json({status: false, message:error})
+        res.status(400).json({status: false, message:error})
 
         })
 }
@@ -29,7 +29,7 @@ exports.deleteList = (req, res) => {
             res.status(200).json({status: true, message:"blogs list Removed", data})
 
         }).catch(error => {
-        res.status(200).json({status: false, message:error})
+        res.status(400).json({status: false, message:error})
 
         })
 }
@@ -42,7 +42,7 @@ exports.showAll = (req, res) => {
             res.status(200).json({status: true, message:"Blogs list fetched", data})
 
         }).catch(error => {
-        res.status(200).json({status: false, message:error})
+        res.status(400).json({status: false, message:error})
 
         })
 }
@@ -55,7 +55,20 @@ exports.viewBlog = (req, res) => {
             res.status(200).json({status: true, message:"Blogs list fetched", data})
 
         }).catch(error => {
-        res.status(200).json({status: false, message:error})
+        res.status(400).json({status: false, message:error})
+
+        })
+}
+
+//Edit blog
+exports.editBlog = (req, res) => {
+
+    Blogs.findByIdAndUpdate(req.params.id, req.body, {new: true}).
+        then(data => {
+            res.status(200).json({status: true, message:"Blog updated", data})
+
+        }).catch(error => {
+        res.status(400).json({status: false, message:error})
 
         })
 }

@@ -43,3 +43,16 @@ exports.showAll = (req, res) => {
 
         })
 }
+
+//Edit features
+exports.editFeatures = (req, res) => {
+
+    Features.findByIdAndUpdate(req.params.id, req.body, {new: true}).
+        then(data => {
+            res.status(200).json({status: true, message:"Feature list updated", data})
+
+        }).catch(error => {
+        res.status(400).json({status: false, message:error})
+
+        })
+}
