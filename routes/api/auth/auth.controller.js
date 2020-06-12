@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../../../models/user')
-
+const nodemailer = require("nodemailer")
 /*
     POST /api/auth/register
     {
@@ -44,6 +44,37 @@ exports.register = (req, res) => {
     // count the number of the user
     const count = (user) => {
         console.log({user})
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'anas3rde@gmail.com',
+              pass: '8123342590'
+            }
+          });
+        
+            var url = "https://distracted-rosalind-719c41.netlify.app" +'/verified/?token='+user._id;
+          
+          var userEmail = user.emailAddress;
+          var emailText = 'Please click on the link below to verify your Account';
+          emailText += '<p><a href="'+url+'">click here</a>';
+          var mailOptions = {
+            from: 'thirdessentials',
+            to: userEmail,
+            subject: 'Verify Your Account',
+            html: emailText
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            //   res.json({ 'success': false, 'message': error });
+            } else {
+              console.log({ 'success': true, 'message': 'email sent successfully' })
+            }
+          });
+
+
         newUser = user
         return User.count({}).exec()
     }
@@ -60,6 +91,9 @@ exports.register = (req, res) => {
 
     // respond to the client
     const respond = (isAdmin) => {
+
+      
+        
         res.json({
             message: 'registered successfully',
             admin: isAdmin ? true : false

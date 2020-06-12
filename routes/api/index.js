@@ -13,7 +13,7 @@ router.use('/blogs', blogs)
 router.use('/features', features)
 router.use('/plans', plans)
 router.use('/auth', auth)
-router.use('/user', authMiddleware)
+// router.use('/user', authMiddleware)
 router.use('/user', user)
 router.use('/admin', admin)
 

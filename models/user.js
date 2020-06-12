@@ -14,7 +14,8 @@ const User = new Schema({
     countryOfPractice:{type:String},
     lawFirmSize:String,
     phoneNumber:String,
-    blocked: {type: Boolean, default: false}
+    blocked: {type: Boolean, default: false},
+    verified: {type: Boolean, default: false},
 
 }, schemaOptions)
 

@@ -1,4 +1,7 @@
 const User = require('../../../models/user')
+const config = require("../../../config")
+const nodemailer = require("nodemailer")
+const crypto = require('crypto')
 
 /* 
     GET /api/user/list
@@ -47,3 +50,108 @@ exports.assignAdmin = (req, res) => {
         (err) => { res.status(404).json({message: err.message})}
     )
 }
+
+exports.resetpassword = (req, res) => {
+    
+      
+        User.findOne({emailAddress: req.body.emailAddress}, function(err, user){
+          if(err) {
+            res.json({ 'success': false, 'message': err });
+          }
+          if(!user){
+            res.status(404).json({ status: false, message: 'No user found' });
+          } else {
+            var transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: 'anas3rde@gmail.com',
+                pass: '8123342590'
+              }
+            });
+          
+              var url = "https://distracted-rosalind-719c41.netlify.app" +'/setpassword/?token='+user._id;
+            
+            var userEmail = user.emailAddress;
+            var emailText = 'please click on the below link for the forget password link';
+            emailText += '<p><a href="'+url+'">click here</a>';
+            var mailOptions = {
+              from: 'thirdessentials',
+              to: userEmail,
+              subject: 'Forget Password Link',
+              html: emailText
+            };
+            
+            transporter.sendMail(mailOptions, function(error, info){
+              if (error) {
+                console.log(error);
+                res.json({ 'success': false, 'message': error });
+              } else {
+                res.json({ 'success': true, 'message': 'email sent successfully' });
+              }
+            });
+          }
+        });
+      
+    } 
+
+
+    exports.setpassword = (req, res) => {
+      
+        User.findById(req.body.userid, function(err, user){
+          if(err) {
+            res.json({ 'success': false, 'message': err });
+          }
+          if(!user){
+            res.json({ 'success': false, 'message': 'No user found' });
+          } else {
+            // bcrypt.genSalt(10, function(err, salt){
+            //   bcrypt.hash(req.body.newpassword, salt, function(err, hash){
+            //     if(err){
+            //       res.json({ 'success': false, 'message': err });
+            //     }
+            const encrypted = crypto.createHmac('sha1', config.secret)
+            .update(req.body.newPassword)
+            .digest('base64')
+
+                let userobject = {};
+                userobject.password = encrypted;
+                let query = {_id: req.body.userid}
+                User.update(query, userobject, function(err){
+                  if(err){
+                    res.json({ 'success': false, 'message': err });
+                    return;
+                  } else {
+                    res.json({ 'success': true, 'message': 'Password Successfully Changed' });
+                  }
+                });
+            //   });
+            // });
+          }
+        });
+      
+      }
+// };
+
+
+
+exports.verify = (req, res) => {
+    
+    User.findByIdAndUpdate(req.body.userid, {$set:{verified: true}}).then(data =>
+        
+        {
+
+            res.json({ 'success': true, 'message': 'Profile verified' });
+        }).catch(err =>{
+
+            // if(err) {
+                res.json({ 'success': false, 'message': err });
+             
+            
+        })
+            // });
+        //   });
+        // });
+      }
+    // });
+    
+//   }
