@@ -69,9 +69,9 @@ exports.register = (req, res) => {
             if (error) {
               console.log(error);
             //   res.json({ 'success': false, 'message': error });
-            } else {
+            } 
               console.log({ 'success': true, 'message': 'email sent successfully' })
-            }
+            
           });
 
 
