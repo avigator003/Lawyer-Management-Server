@@ -143,15 +143,29 @@ exports.verify = (req, res) => {
             res.json({ 'success': true, 'message': 'Profile verified' });
         }).catch(err =>{
 
-            // if(err) {
+
                 res.json({ 'success': false, 'message': err });
              
             
         })
-            // });
-        //   });
-        // });
+         
       }
-    // });
+
+
+      
+      exports.deleteUser = (req, res) => {
     
-//   }
+        User.findByIdAndRemove(req.params.id).then(data =>
+            
+            {
+    
+                res.status(200).json({ 'success': true, 'message': 'user removed' });
+            }).catch(err =>{
+    
+    
+                    res.status(400).json({ 'success': false, 'message': err });
+                 
+                
+            })
+             
+          }
