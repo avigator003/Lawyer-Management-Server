@@ -45,6 +45,7 @@ User.statics.create = function(password,
     countryOfPractice,
     lawFirmSize,
         password: encrypted,
+        phoneNumber,
         admin
     })
 
