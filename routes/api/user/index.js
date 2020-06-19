@@ -7,6 +7,8 @@ router.post('/resetpassword', controller.resetpassword)
 router.post('/setpassword', controller.setpassword)
 router.post('/verify', controller.verify)
 router.get('/delete/:id', controller.deleteUser)
+router.get('/count', controller.count)
+
 
 
 module.exports = router

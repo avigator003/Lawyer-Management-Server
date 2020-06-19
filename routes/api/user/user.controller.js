@@ -3,6 +3,24 @@ const config = require("../../../config")
 const nodemailer = require("nodemailer")
 const crypto = require('crypto')
 
+
+
+exports.count = (req, res) => {
+  // refuse if not an admin
+  // if(!req.decoded.admin) {
+  //     return res.status(403).json({
+  //         message: 'you are not an admin'
+  //     })
+  // }
+
+  User.count({}).then(data=>
+    res.status(200).json({status: true, data })
+  ).catch(error => {
+    res.status(400).json({status: false, message: error})
+  })
+}
+
+
 /* 
     GET /api/user/list
 */
