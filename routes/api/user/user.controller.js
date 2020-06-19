@@ -13,7 +13,7 @@ exports.count = (req, res) => {
   //     })
   // }
 
-  User.count({}).then(data=>
+  User.find({admin: false}).count({}).then(data=>
     res.status(200).json({status: true, data })
   ).catch(error => {
     res.status(400).json({status: false, message: error})
