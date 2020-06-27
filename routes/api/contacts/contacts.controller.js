@@ -55,3 +55,16 @@ exports.showAll = (req, res) => {
 
         })
 }
+
+//View One
+exports.view = (req, res) => {
+
+    Contact.findById(req.params.id).populate("company").
+        then(data => {
+            res.status(200).json({status: true, message:"Contact fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}

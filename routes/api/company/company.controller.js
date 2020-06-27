@@ -52,3 +52,16 @@ exports.showAll = (req, res) => {
 
         })
 }
+
+//View One
+exports.view = (req, res) => {
+
+    Company.findById(req.params.id).
+        then(data => {
+            res.status(200).json({status: true, message:"company fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
