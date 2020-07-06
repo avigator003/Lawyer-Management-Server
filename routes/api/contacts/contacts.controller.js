@@ -68,3 +68,17 @@ exports.view = (req, res) => {
 
         })
 }
+
+
+//fetch for one user
+exports.viewSpecific = (req, res) => {
+
+    Contact.find({userId:req.params.id}).
+        then(data => {
+            res.status(200).json({status: true, message:"company fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
