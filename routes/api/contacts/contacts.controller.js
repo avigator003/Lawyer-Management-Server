@@ -19,7 +19,9 @@ exports.createContact = (req, res) => {
     contact.customFields=req.body.customFields,
     contact.billingPaymentProfile=req.body.billingPaymentProfile,
     contact.billingCustomRate=req.body.billingCustomRate,
-    contact.billingClientId=req.body.billingClientId
+    contact.billingClientId=req.body.billingClientId,
+    contact.userId=req.body.userId
+
  
         contact.save().then(data => {
             res.status(200).json({status: true, message:"Contact list Saved", data})
