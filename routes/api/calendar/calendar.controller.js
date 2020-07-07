@@ -70,7 +70,7 @@ exports.updateEvent = (req, res) => {
 };
 
 exports.fetchForMatter = (req, res) => {
-    Event.find({matter: req.params.id})
+    Event.find({matter: req.params.id}).populate("matter")
       .then((data) => {
         res.status(200).json({ status: true, message: "events fetched for matter", data });
       })

@@ -9,6 +9,5 @@ router.get("/view/:id", controller.view)
 router.get("/viewforuser/:id", controller.viewSpecific)
 router.post("/update/:id", controller.updateEvent)
 router.get("/fetchformatter/:id", controller.fetchForMatter)
-router.get("/edit/:id", controller.updateEvent)
 
 module.exports = router
