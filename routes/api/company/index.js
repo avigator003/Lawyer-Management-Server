@@ -41,6 +41,7 @@ router.get("/showall", controller.showAll)
 router.get("/view/:id", controller.view)
 router.get("/viewforuser/:id", controller.viewSpecific)
 router.post("/upload/:id",parser.single('image'), controller.upload)
+router.post("/edit/:id", controller.editCompany)
 
 
 module.exports = router
