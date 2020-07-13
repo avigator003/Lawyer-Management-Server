@@ -88,8 +88,10 @@ exports.viewSpecific = (req, res) => {
 
 //upload
 exports.upload= (req, res) => {
-
-    Contact.findOneAndUpdate(req.params.id, {$set:{image:req.file.path}} ).
+console.log(req.params.id)
+// console.log(req.body)
+console.log(req.file)
+    Contact.findByIdAndUpdate(req.params.id, {$set:{image:req.file.path}} ).
         then(data => {
             res.status(200).json({status: true, message:"image uploaded", data})
 

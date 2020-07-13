@@ -12,6 +12,7 @@ const contact = require("./contacts")
 const matter = require("./matters")
 const tasks = require("./tasks")
 const calendar = require("./calendar")
+const activity = require("./activities")
 
 router.use('/contactus', contactus)
 router.use('/blogs', blogs)
@@ -25,7 +26,7 @@ router.use('/contact', contact)
 router.use('/user', user)
 router.use('/tasks', tasks)
 router.use("/calendar", calendar)
-
+router.use("/activity", activity)
 router.use('/admin', admin)
 
 
