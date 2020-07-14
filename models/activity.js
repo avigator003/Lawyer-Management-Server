@@ -11,8 +11,10 @@ const Activity = new Schema({
     rate:String,
     date:{type:Date, default:Date.now},
     user:{type:Schema.Types.ObjectId, ref: "User"},
+    matter:{type:Schema.Types.ObjectId, ref: "Matters"},
     invoiceStatus:String,
     time:String,
+    billable:{type:Boolean, default: false},
     amount:String,
     userId:{type:Schema.Types.ObjectId, ref:"User"}
 }, SchemaOptions)

@@ -82,3 +82,17 @@ exports.editActivity = (req, res) => {
 
         })
 }
+
+
+//fetch for one user and one matter
+exports.viewSpecificForMatter = (req, res) => {
+
+    Activity.find({userId:req.params.id, matter:req.params.matter}).populate("user").populate("matter")
+        then(data => {
+            res.status(200).json({status: true, message:"Activity fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
