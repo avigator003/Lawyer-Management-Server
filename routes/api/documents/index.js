@@ -26,6 +26,6 @@ router.get("/view/:id", controller.viewDocument)
 router.get("/viewforuser/:id", controller.viewSpecific)
 router.get("/viewformatter/:id/:matter", controller.viewSpecificForMatter)
 router.post("/upload/:id",parser.single('document'), controller.upload)
-// router.post("/edit/:id", controller.editContact)
+router.post("/edit/:id", controller.editDocument)
 
 module.exports = router
