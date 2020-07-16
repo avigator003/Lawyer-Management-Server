@@ -56,7 +56,7 @@ exports.showAll= (req, res) => {
 
 //Edit features
 exports.editDocument = (req, res) => {
-
+console.log(req.body, req.params.id)
     Document.findByIdAndUpdate(req.params.id, req.body, {new: true}).
         then(data => {
             res.status(200).json({status: true, message:"document updated", data})
