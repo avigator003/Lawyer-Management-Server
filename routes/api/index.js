@@ -16,6 +16,8 @@ const activity = require("./activities")
 const document = require("./documents")
 const billing = require("./billing")
 const account = require("./accounts")
+const support = require("./support")
+
 router.use('/contactus', contactus)
 router.use('/blogs', blogs)
 router.use('/features', features)
@@ -33,6 +35,7 @@ router.use("/activity", activity)
 router.use('/admin', admin)
 router.use('/document', document)
 router.use('/account', account)
+router.use('/ticket', support)
 
 
 module.exports = router
