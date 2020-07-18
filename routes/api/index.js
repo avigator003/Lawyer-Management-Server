@@ -17,6 +17,7 @@ const document = require("./documents")
 const billing = require("./billing")
 const account = require("./accounts")
 const support = require("./support")
+const Communication = require("./communication")
 
 router.use('/contactus', contactus)
 router.use('/blogs', blogs)
@@ -36,6 +37,8 @@ router.use('/admin', admin)
 router.use('/document', document)
 router.use('/account', account)
 router.use('/ticket', support)
+router.use('/communication', Communication)
+
 
 
 module.exports = router
