@@ -10,8 +10,8 @@ const Tasks = new Schema({
     description:String,
     priority:String,
    matter:{type: Schema.Types.ObjectId, ref:"Matters"},
-userId:{type:Schema.Types.ObjectId, ref:"User"}
-
+userId:{type:Schema.Types.ObjectId, ref:"User"},
+status:{type:Boolean, default: false}
 },schemaOptions)
 
 module.exports = mongoose.model('Tasks', Tasks)

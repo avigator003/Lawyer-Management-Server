@@ -9,6 +9,8 @@ router.post("/edit/:id", controller.editTasks)
 router.get("/view/:id", controller.viewTasks)
 router.get("/viewforuser/:id", controller.viewSpecific)
 router.get("/fetchformatter/:id", controller.fetchForMatter)
+router.get("/updatetask/:id", controller.setTrue)
+
 
 
 module.exports = router
