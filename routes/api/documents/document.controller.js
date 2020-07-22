@@ -94,7 +94,7 @@ exports.deleteDocument = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    document.find({userId:req.params.id}).populate("matter").
+    Document.find({userId:req.params.id}).populate("matter").
         then(data => {
             res.status(200).json({status: true, message:"document fetched", data})
 
