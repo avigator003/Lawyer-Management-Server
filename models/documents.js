@@ -12,7 +12,7 @@ const Documents = new Schema({
     category:String,
     document:String,
     userId:{type:Schema.Types.ObjectId, ref:"User"},
-    contact:{type:Schema.Types.ObjectId, ref:"User"}
+    contact:{type:Schema.Types.ObjectId, ref:"Contacts"}
 
 },schemaOptions)
 
