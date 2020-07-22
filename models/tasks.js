@@ -11,7 +11,9 @@ const Tasks = new Schema({
     priority:String,
    matter:{type: Schema.Types.ObjectId, ref:"Matters"},
 userId:{type:Schema.Types.ObjectId, ref:"User"},
-status:{type:Boolean, default: false}
+status:{type:Boolean, default: false},
+assignee:{type:Schema.Types.ObjectId, ref:"Contacts"},
+reminder:Object
 },schemaOptions)
 
 module.exports = mongoose.model('Tasks', Tasks)

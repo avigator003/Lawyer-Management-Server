@@ -16,4 +16,4 @@ const Documents = new Schema({
 
 },schemaOptions)
 
-module.exports = mongoose.model('Contacts', Documents)
+module.exports = mongoose.model('Documents', Documents)
