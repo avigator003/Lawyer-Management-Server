@@ -1,4 +1,4 @@
-const Communication = require('../../../models/contacts.js')
+const Communication = require('../../../models/communication')
 
 
 // Create New log
