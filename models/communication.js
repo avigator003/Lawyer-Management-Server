@@ -8,6 +8,7 @@ const Communication = new Schema({
   from: { type: Schema.Types.ObjectId, ref: "Contacts" },
   subject: String,
   body: String,
+  to:String,
   matter: { type: Schema.Types.ObjectId, ref: "Matters" },
   userId: { type: Schema.Types.ObjectId, ref: "User" },
   addTime: { type: String },

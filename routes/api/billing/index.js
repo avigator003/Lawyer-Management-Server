@@ -9,5 +9,14 @@ router.post("/edit/:id", controller.editBills)
 router.get("/view/:id", controller.viewBills)
 router.get("/viewforuser/:id", controller.viewSpecific)
 
+//Saved bills
+router.post("/bill/create", controller.saveBill)
+router.get("/bill/delete/:id", controller.deleteSavedBill)
+router.get("/bill/showall", controller.showAllSavedBill)
+router.post("/bill/edit/:id", controller.editBillsSaveBill)
+router.get("/bill/view/:id", controller.viewBillsSaveBill)
+router.get("/bill/viewforuser/:id", controller.viewSpecificSaveBill)
+router.get("/bill/viewforcontact/:id/:contact", controller.viewSpecificSaveBillClient)
+
 
 module.exports = router
