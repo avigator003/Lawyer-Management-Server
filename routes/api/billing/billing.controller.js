@@ -18,7 +18,7 @@ exports.create = (req, res) => {
 }
 
 //Delete a bill
-exports.deleteSavedBill = (req, res) => {
+exports.delete = (req, res) => {
 // console.log(req.params.id)
 Billing.findByIdAndRemove(req.params.id).
         then(data => {
@@ -31,7 +31,7 @@ Billing.findByIdAndRemove(req.params.id).
 }
 
 //Show all bills
-exports.showAllSavedBill = (req, res) => {
+exports.showAll = (req, res) => {
 
     Billing.find({}).
         then(data => {
@@ -44,7 +44,7 @@ exports.showAllSavedBill = (req, res) => {
 }
 
 //Edit bills
-exports.editSavedBills = (req, res) => {
+exports.editBills = (req, res) => {
 
     Billing.findByIdAndUpdate(req.params.id, req.body, {new: true}).
         then(data => {
