@@ -5,12 +5,12 @@ const schemaOptions = {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
   };
 const Bills = new Schema({
-  client:{type:Schema.Types.ObjectId, ref:"User"},
+  client:{type:Schema.Types.ObjectId, ref:"Contacts"},
   source:String,
   paymentDate:Date,
   destination:{type:Schema.Types.ObjectId, ref:"Account"},
   ReferenceId:String,
-  userId:{type:Schema.Types.ObjectId, ref:"User"}
+  userId:{type:Schema.Types.ObjectId, ref:"User"},
 
 
 },schemaOptions)

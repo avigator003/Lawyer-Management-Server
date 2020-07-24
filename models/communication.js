@@ -10,6 +10,7 @@ const Communication = new Schema({
   body: String,
   to:String,
   matter: { type: Schema.Types.ObjectId, ref: "Matters" },
+  contact:{ type: Schema.Types.ObjectId, ref: "Contacts" },
   userId: { type: Schema.Types.ObjectId, ref: "User" },
   addTime: { type: String },
 });
