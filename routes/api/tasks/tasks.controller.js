@@ -1,5 +1,5 @@
 const tasks = require('../../../models/tasks')
-
+const List = require('../../../models/lists')
 
 // Create New task
 exports.createTask = (req, res) => {
@@ -98,3 +98,84 @@ exports.fetchForMatter = (req, res) => {
         res.status(400).json({ status: false, message: error });
       });
   };
+
+  //List controller
+
+  // Create New list
+exports.createList = (req, res) => {
+
+    let list = new List(req.body)
+
+        list.save().then(data => {
+            res.status(200).json({status: true, message:"list Saved", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Delete a list
+exports.deleteList = (req, res) => {
+// console.log(req.params.id)
+    List.findByIdAndRemove(req.params.id).
+        then(data => {
+            res.status(200).json({status: true, message:"list Removed", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Show all tasks
+exports.showAllLists = (req, res) => {
+
+    List.find({}).populate("matter").
+        then(data => {
+            res.status(200).json({status: true, message:"List fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Edit tasks
+exports.editLists = (req, res) => {
+
+    List.findByIdAndUpdate(req.params.id, req.body, {new: true}).
+        then(data => {
+            res.status(200).json({status: true, message:"List updated", data})
+
+        }).catch(error => {
+        res.status(400).json({status: false, message:error})
+
+        })
+}
+
+exports.viewList = (req, res) => {
+
+    List.findById(req.params.id).populate("tasks userId").
+        then(data => {
+            res.status(200).json({status: true, message:"Lists fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//fetch for one user
+exports.viewSpecificUserList = (req, res) => {
+
+    List.find({userId:req.params.id}).
+        then(data => {
+            res.status(200).json({status: true, message:"Lists fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+

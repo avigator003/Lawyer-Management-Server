@@ -11,6 +11,13 @@ router.get("/viewforuser/:id", controller.viewSpecific)
 router.get("/fetchformatter/:id", controller.fetchForMatter)
 router.get("/updatetask/:id", controller.setTrue)
 
+//lists
+router.post("/list/create", controller.createList)
+router.get("/list/delete/:id", controller.deleteList)
+router.get("/list/showall", controller.showAllLists)
+router.post("/list/edit/:id", controller.editLists)
+router.get("/list/view/:id", controller.viewList)
+router.get("/list/viewforuser/:id", controller.viewSpecificUserList)
 
 
 module.exports = router
