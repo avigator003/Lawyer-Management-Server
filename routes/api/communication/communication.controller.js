@@ -88,8 +88,8 @@ exports.editCommunication = (req, res) => {
    //fetch for one user and client
    exports.viewSpecificCommunicationClient = (req, res) => {
     
-    Communication.find({userId:req.params.id, from:req.params.contact}).
-        then(data => {
+    Communication.find({userId:req.params.id, from:req.params.contact}).populate("from matter to")
+        .then(data => {
             res.status(200).json({status: true, message:" fetched", data})
 
         }).catch(error => {
