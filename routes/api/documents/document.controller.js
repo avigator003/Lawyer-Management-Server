@@ -115,3 +115,15 @@ exports.viewSpecificForMatter = (req, res) => {
 
         })
 }
+
+exports.viewSpecificForContact = (req, res) => {
+
+    Document.find({userId:req.params.id, contact:req.params.contact}).populate("matter").
+        then(data => {
+            res.status(200).json({status: true, message:"document fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
