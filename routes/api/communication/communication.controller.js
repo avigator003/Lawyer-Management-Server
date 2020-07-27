@@ -88,7 +88,7 @@ exports.editCommunication = (req, res) => {
    //fetch for one user and client
    exports.viewSpecificCommunicationClient = (req, res) => {
     
-    SaveBill.find({userId:req.params.id, from:req.params.client}).
+    Communication.find({userId:req.params.id, from:req.params.client}).
         then(data => {
             res.status(200).json({status: true, message:" fetched", data})
 
