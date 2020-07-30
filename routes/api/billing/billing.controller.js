@@ -153,7 +153,7 @@ exports.deleteSaveBill = (req, res) => {
     //fetch for one user
     exports.viewSpecificSaveBill = (req, res) => {
     
-        SaveBill.find({userId:req.params.id}).
+        SaveBill.find({userId:req.params.id}).populate("matter client").
             then(data => {
                 res.status(200).json({status: true, message:"bill fetched", data})
     
