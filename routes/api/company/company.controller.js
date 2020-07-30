@@ -97,7 +97,7 @@ exports.view = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    Company.find({userId:req.params.id}).
+    Company.find({userId:req.params.id}).populate("employees")
         then(data => {
             res.status(200).json({status: true, message:"company fetched", data})
 
