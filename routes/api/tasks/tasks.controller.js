@@ -99,6 +99,16 @@ exports.fetchForMatter = (req, res) => {
       });
   };
 
+  exports.setFalse = (req, res) => {
+    tasks.findByIdAndUpdate(req.params.id, {$set:{status: false}}, {new: true} )
+      .then((data) => {
+        res.status(200).json({ status: true, message: "tasks updated", data });
+      })
+      .catch((error) => {
+        res.status(400).json({ status: false, message: error });
+      });
+  };
+
   //List controller
 
   // Create New list

@@ -10,6 +10,7 @@ router.get("/view/:id", controller.viewTasks)
 router.get("/viewforuser/:id", controller.viewSpecific)
 router.get("/fetchformatter/:id", controller.fetchForMatter)
 router.get("/updatetask/:id", controller.setTrue)
+router.get("/setfalse/:id", controller.setFalse)
 
 //lists
 router.post("/list/create", controller.createList)
