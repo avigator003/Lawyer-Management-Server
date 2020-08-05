@@ -59,7 +59,7 @@ exports.view = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    Communication.find({userId:req.params.id}).
+    Communication.find({userId:req.params.id}).populate("from matter to").
         then(data => {
             res.status(200).json({status: true, message:"Communication fetched", data})
 
