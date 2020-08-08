@@ -18,6 +18,8 @@ const billing = require("./billing")
 const account = require("./accounts")
 const support = require("./support")
 const Communication = require("./communication")
+const Notes = require("./notes")
+
 
 router.use('/contactus', contactus)
 router.use('/blogs', blogs)
@@ -38,6 +40,7 @@ router.use('/document', document)
 router.use('/account', account)
 router.use('/ticket', support)
 router.use('/communication', Communication)
+router.use('/notes', Notes)
 
 
 
