@@ -12,6 +12,7 @@ const Activity = new Schema({
     date:{type:Date, default:Date.now},
     user:{type:Schema.Types.ObjectId, ref: "User"},
     matter:{type:Schema.Types.ObjectId, ref: "Matters"},
+    contact:[{contact:{type:Schema.Types.ObjectId, ref:"Contacts"}}],
     invoiceStatus:String,
     time:String,
     billable:{type:Boolean, default: false},
