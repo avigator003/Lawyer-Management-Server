@@ -17,7 +17,9 @@ const Activity = new Schema({
     time:String,
     billable:{type:Boolean, default: false},
     amount:String,
-    userId:{type:Schema.Types.ObjectId, ref:"User"}
+    userId:{type:Schema.Types.ObjectId, ref:"User"},
+    billed:{type:Boolean, default: false}
+
 }, SchemaOptions)
 
 
