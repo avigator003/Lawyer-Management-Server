@@ -114,7 +114,7 @@ exports.deleteSaveBill = (req, res) => {
     //Show all bills
     exports.showAllSaveBill = (req, res) => {
     
-        SaveBill.find({}).
+        SaveBill.find({}).populate("matter").
             then(data => {
                 res.status(200).json({status: true, message:"bills fetched", data})
     
