@@ -10,7 +10,8 @@ const Notes = new Schema({
    date:{type:Date, default:Date.now},
     userId:{type:Schema.Types.ObjectId, ref:"User"},
     matter:{type:Schema.Types.ObjectId, ref: "Matters"},
-    contact:[{contact:{type:Schema.Types.ObjectId, ref:"Contacts"}}]
+    contact:[{contact:{type:Schema.Types.ObjectId, ref:"Contacts"}}],
+    hours:String
 }, SchemaOptions)
 
 
