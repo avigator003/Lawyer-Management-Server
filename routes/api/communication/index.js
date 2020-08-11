@@ -8,6 +8,7 @@ router.get("/delete/:id", controller.deleteCommunication)
 router.get("/showall", controller.showAll)
 router.get("/view/:id", controller.view)
 router.get("/viewforuser/:id", controller.viewSpecific)
+router.get("/viewformatter/:id/:matter", controller.viewForMatter)
 
 router.post("/edit/:id", controller.editCommunication)
 router.get("/viewforcontact/:id/:contact", controller.viewSpecificCommunicationClient)

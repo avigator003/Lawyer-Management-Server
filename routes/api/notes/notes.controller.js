@@ -62,7 +62,7 @@ exports.viewSpecific = (req, res) => {
 
     Notes.find({userId:req.params.id}).
         then(data => {
-            res.status(200).json({status: true, message:"company fetched", data})
+            res.status(200).json({status: true, message:"notes fetched", data})
 
         }).catch(error => {
         res.status(200).json({status: false, message:error})
@@ -70,6 +70,29 @@ exports.viewSpecific = (req, res) => {
         })
 }
 
+exports.viewForContact = (req, res) => {
+
+    Notes.find({userId:req.params.id, contact:req.params.contact}).
+        then(data => {
+            res.status(200).json({status: true, message:"note fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+exports.viewForMatter = (req, res) => {
+
+    Notes.find({userId:req.params.id, matter:req.params.matter}).
+        then(data => {
+            res.status(200).json({status: true, message:"notes fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
 
 //upload
 

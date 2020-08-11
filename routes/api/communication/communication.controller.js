@@ -70,7 +70,17 @@ exports.viewSpecific = (req, res) => {
 }
 
 
+exports.viewForMatter = (req, res) => {
 
+    Communication.find({userId:req.params.id, matter:req.params.matter}).populate("from matter to").
+        then(data => {
+            res.status(200).json({status: true, message:"Communication fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
 
 //Edit contact
 exports.editCommunication = (req, res) => {

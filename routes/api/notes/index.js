@@ -24,6 +24,9 @@ router.get("/delete/:id", controller.deleteNotes)
 router.get("/showall", controller.showAll)
 router.get("/view/:id", controller.view)
 router.get("/viewforuser/:id", controller.viewSpecific)
+router.get("/viewformatter/:id/:matter", controller.viewForMatter)
+router.get("/viewforcontact/:id/:contact", controller.viewForContact)
+
 router.post("/edit/:id", controller.editNotes)
 
 module.exports = router
