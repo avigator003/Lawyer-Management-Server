@@ -58,7 +58,13 @@ exports.view = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    Activity.find({userId:req.params.id}).populate("user matter").
+    Activity.find({userId:req.params.id}).populate("user").populate([{
+        path: 'matter',
+        model: 'Matters',
+        populate: {
+          path: 'client',
+          model: 'Contacts'
+        }}]).
         then(data => {
             res.status(200).json({status: true, message:"Activity fetched", data})
 
