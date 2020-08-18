@@ -1,4 +1,6 @@
 const Document = require('../../../models/documents')
+const Categories = require('../../../models/categories')
+const Folders = require('../../../models/folders')
 
 // upload a new document
 exports.upload= (req, res) => {
@@ -121,6 +123,184 @@ exports.viewSpecificForContact = (req, res) => {
     Document.find({userId:req.params.id, contact:req.params.contact}).populate("matter").
         then(data => {
             res.status(200).json({status: true, message:"document fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Categories
+// upload a new Category
+exports.createCategory= (req, res) => {
+    // console.log(req.params.id)
+    // console.log(req.body.name)
+    // console.log(req.file)
+
+let category = new Category(req.body)
+
+       category.save().
+            then(data => {
+                res.status(200).json({status: true, message:"category saved", data})
+    
+            }).catch(error => {
+            res.status(200).json({status: false, message:error})
+    
+            })
+    }
+
+
+
+
+
+//Delete a category
+exports.deleteCategory = (req, res) => {
+// console.log(req.params.id)
+    Category.findByIdAndRemove(req.params.id).
+        then(data => {
+            res.status(200).json({status: true, message:"category Removed", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Show all categories
+exports.showAllCategory= (req, res) => {
+
+    Category.find({}).
+        then(data => {
+            res.status(200).json({status: true, message:"categories fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Edit category
+exports.editCategory = (req, res) => {
+// console.log(req.body, req.params.id)
+    Category.findByIdAndUpdate(req.params.id, req.body, {new: true}).
+        then(data => {
+            res.status(200).json({status: true, message:"category updated", data})
+
+        }).catch(error => {
+        res.status(400).json({status: false, message:error})
+
+        })
+}
+
+exports.viewCategory = (req, res) => {
+
+    Category.findById(req.params.id).populate("Documents").
+        then(data => {
+            res.status(200).json({status: true, message:"category fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+
+//fetch for one user
+exports.viewSpecificCategory = (req, res) => {
+
+    Category.find({userId:req.params.id}).populate("documents").
+        then(data => {
+            res.status(200).json({status: true, message:"category fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+
+//Folders
+
+// create a new folder
+exports.createFolder= (req, res) => {
+    // console.log(req.params.id)
+    // console.log(req.body.name)
+    // console.log(req.file)
+
+let folder = new Folder(req.body)
+
+       folder.save().
+            then(data => {
+                res.status(200).json({status: true, message:"Folder created", data})
+    
+            }).catch(error => {
+            res.status(200).json({status: false, message:error})
+    
+            })
+    }
+
+
+
+
+
+//Delete a folder
+exports.deleteFolder = (req, res) => {
+// console.log(req.params.id)
+    Folder.findByIdAndRemove(req.params.id).
+        then(data => {
+            res.status(200).json({status: true, message:"Folder Removed", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Show all folders
+exports.showAllFolders= (req, res) => {
+
+    Folder.find({}).
+        then(data => {
+            res.status(200).json({status: true, message:"Folders fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//Edit Folder
+exports.editFolder = (req, res) => {
+// console.log(req.body, req.params.id)
+    Folder.findByIdAndUpdate(req.params.id, req.body, {new: true}).
+        then(data => {
+            res.status(200).json({status: true, message:"Folder updated", data})
+
+        }).catch(error => {
+        res.status(400).json({status: false, message:error})
+
+        })
+}
+
+exports.viewFolder = (req, res) => {
+
+    Folder.findById(req.params.id).populate("documents").
+        then(data => {
+            res.status(200).json({status: true, message:"folder fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+
+//fetch for one user
+exports.viewFolderSpecific = (req, res) => {
+
+    Folder.find({userId:req.params.id}).populate("documents").
+        then(data => {
+            res.status(200).json({status: true, message:"Folders fetched", data})
 
         }).catch(error => {
         res.status(200).json({status: false, message:error})
