@@ -1,6 +1,6 @@
 const Document = require('../../../models/documents')
-const Categories = require('../../../models/categories')
-const Folders = require('../../../models/folders')
+const Category = require('../../../models/categories')
+const Folder = require('../../../models/folders')
 
 // upload a new document
 exports.upload= (req, res) => {
