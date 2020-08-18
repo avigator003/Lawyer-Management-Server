@@ -29,4 +29,31 @@ router.get("/viewforcontact/:id/:contact", controller.viewSpecificForContact)
 router.post("/upload/:id",parser.single('document'), controller.upload)
 router.post("/edit/:id", controller.editDocument)
 
+//Categories
+router.get("/category/delete/:id", controller.deleteCategory)
+router.get("/category/showall", controller.showAllCategory)
+router.get("/category/view/:id", controller.viewCategory)
+router.get("/category/viewforuser/:id", controller.viewSpecificCategory)
+// router.get("/viewformatter/:id/:matter", controller.viewSpecificForMatter)
+// router.get("/viewforcontact/:id/:contact", controller.viewSpecificForContact)
+router.post("/category/create", controller.createCategory)
+router.post("/category/edit/:id", controller.editCategory)
+
+
+//folders
+router.get("/folder/delete/:id", controller.deleteFolder)
+router.get("/folder/showall", controller.showAllFolders)
+router.get("/folder/view/:id", controller.viewFolder)
+router.get("/folder/viewforuser/:id", controller.viewFolderSpecific)
+// router.get("/viewformatter/:id/:matter", controller.viewSpecificForMatter)
+// router.get("/viewforcontact/:id/:contact", controller.viewSpecificForContact)
+router.post("/folder/create", controller.createFolder)
+router.post("/folder/edit/:id", controller.editFolder)
+
+
+
+
+
+
+
 module.exports = router
