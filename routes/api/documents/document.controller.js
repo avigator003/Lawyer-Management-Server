@@ -13,7 +13,8 @@ let document = new Document({
     matter:req.body.matter,
     category:req.body.category,
     document: req.file.path,
-    userId:req.body.userId
+    userId:req.body.userId,
+    type:req.body.type
 })
 
        document.save().
