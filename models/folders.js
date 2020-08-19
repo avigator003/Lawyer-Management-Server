@@ -8,7 +8,7 @@ const Folders = new Schema({
     name:String,
     documents:[{type:Schema.Types.ObjectId, ref:"Documents"}],
     userId:{type:Schema.Types.ObjectId, ref:"User"},
-    folder:[{type:Schema.Types.ObjectId, ref:"Folder"}],
+    folder:[{type:Schema.Types.ObjectId, ref:"Folders"}],
 type:String
 },schemaOptions)
 
