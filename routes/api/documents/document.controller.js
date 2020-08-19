@@ -28,6 +28,31 @@ let document = new Document({
     }
 
 
+// upload a new document
+exports.uploadTemplate= (req, res) => {
+    // console.log(req.params.id)
+    // console.log(req.body.name)
+    // console.log(req.file)
+
+let document = new Document({
+    name:req.body.name,
+    matter:req.body.matter,
+    category:req.body.category,
+    document: req.body.document,
+    userId:req.body.userId,
+    type:req.body.type
+})
+
+       document.save().
+            then(data => {
+                res.status(200).json({status: true, message:"document saved", data})
+    
+            }).catch(error => {
+            res.status(200).json({status: false, message:error})
+    
+            })
+    }
+
 
 
 

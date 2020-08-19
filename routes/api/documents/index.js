@@ -27,6 +27,8 @@ router.get("/viewforuser/:id", controller.viewSpecific)
 router.get("/viewformatter/:id/:matter", controller.viewSpecificForMatter)
 router.get("/viewforcontact/:id/:contact", controller.viewSpecificForContact)
 router.post("/upload/:id",parser.single('document'), controller.upload)
+router.post("/uploadtemplate/:id", controller.uploadTemplate)
+
 router.post("/edit/:id", controller.editDocument)
 
 //Categories
