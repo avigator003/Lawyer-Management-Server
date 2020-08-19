@@ -285,7 +285,7 @@ exports.editFolder = (req, res) => {
 
 exports.viewFolder = (req, res) => {
 
-    Folder.findById(req.params.id).populate("documents").
+    Folder.findById(req.params.id).populate("documents folder").
         then(data => {
             res.status(200).json({status: true, message:"folder fetched", data})
 
