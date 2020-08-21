@@ -2,9 +2,9 @@ const Ticket = require('../../../models/tickets')
 
 // create a new document
 exports.create= (req, res) => {
-    console.log(req.params.id)
-    console.log(req.body.name)
-    // console.log(req.file)
+    // console.log(req.params.id)
+    console.log(req.body)
+    console.log(req.file)
 
 let ticket = new Ticket({
     firstName:req.body.firstName,

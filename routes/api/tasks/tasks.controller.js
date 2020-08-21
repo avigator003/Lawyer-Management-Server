@@ -69,7 +69,7 @@ exports.viewTasks = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    tasks.find({userId:req.params.id}).
+    tasks.find({userId:req.params.id}).populate("matter").
         then(data => {
             res.status(200).json({status: true, message:"tasks fetched", data})
 
