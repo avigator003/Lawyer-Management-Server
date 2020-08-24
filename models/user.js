@@ -16,7 +16,8 @@ const User = new Schema({
     phoneNumber:String,
     blocked: {type: Boolean, default: false},
     verified: {type: Boolean, default: false},
-    customFields:[]
+    customFields:[],
+    account:Object
 }, schemaOptions)
 
 
