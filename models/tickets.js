@@ -9,6 +9,7 @@ const ticket = new Schema({
     lastName:String,
     email:String,
     issue:String,
+    document:String,
     attachment:String,
     url:String,
 userId:{type:Schema.Types.ObjectId, ref:"User"}

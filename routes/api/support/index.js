@@ -19,7 +19,6 @@ const storage = new CloudinaryStorage({
 });
 const parser = multer({ storage: storage });
 
-router.post("/create",parser.single('document'), controller.create)
 router.get("/delete/:id", controller.deleteTicket)
 router.get("/showall", controller.showAll)
 router.get("/view/:id", controller.viewTicket)
@@ -27,5 +26,6 @@ router.get("/viewforuser/:id", controller.viewSpecific)
 // router.get("/viewformatter/:id/:matter", controller.viewSpecificForMatter)
 // router.post("/upload/:id",parser.single('document'), controller.upload)
 router.post("/edit/:id", controller.editTicket)
+router.post("/create",parser.single('document'), controller.create)
 
 module.exports = router
