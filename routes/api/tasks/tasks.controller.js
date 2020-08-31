@@ -166,7 +166,13 @@ exports.editLists = (req, res) => {
 
 exports.viewList = (req, res) => {
 
-    List.findById(req.params.id).populate("tasks userId").
+    List.findById(req.params.id).populate("tasks userId").populate([{
+        path: 'tasks',
+        // model: 'Matters',
+        populate: {
+          path: 'matter',
+          model: 'Matters'
+        }}]).
         then(data => {
             res.status(200).json({status: true, message:"Lists fetched", data})
 
