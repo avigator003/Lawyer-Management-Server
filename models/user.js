@@ -17,7 +17,8 @@ const User = new Schema({
     blocked: {type: Boolean, default: false},
     verified: {type: Boolean, default: false},
     customFields:[],
-    account:Object
+    account:Object,
+    target:Object
 }, schemaOptions)
 
 
