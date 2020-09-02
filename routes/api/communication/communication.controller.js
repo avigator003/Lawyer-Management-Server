@@ -9,13 +9,7 @@ var SESCREDENTIALS = {
 };
 
 var transporter = nodemailer.createTransport(sesTransport({
-    // accessKeyId: "AKIA3OKRZPIAJPQRB6VJ",
-    
-    // accessKeyId: "AKIAJWEU66KXH6URMLXQ",
-    // secretAccessKey: "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",
-
-    // secretAccessKey: "BEPVrwmcEluziDs3f5MF6wbkfPKW0WLQsUnKKEwqEp8u",
-    // rateLimit: 5
+   
 }));
 
 // Create New log
