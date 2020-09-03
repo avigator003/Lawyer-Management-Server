@@ -11,6 +11,7 @@ exports.upload= (req, res) => {
 let document = new Document({
     name:req.body.name,
     matter:req.body.matter,
+    contact:req.body.contact,
     category:req.body.category,
     document: req.file.path,
     userId:req.body.userId,
@@ -146,7 +147,7 @@ exports.viewSpecificForMatter = (req, res) => {
 
 exports.viewSpecificForContact = (req, res) => {
 
-    Document.find({userId:req.params.id, contact:req.params.contact}).populate("matter").
+    Document.find({userId:req.params.id, contact:req.params.contact}).populate("matter contact").
         then(data => {
             res.status(200).json({status: true, message:"document fetched", data})
 
