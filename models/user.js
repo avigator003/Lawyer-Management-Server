@@ -18,7 +18,8 @@ const User = new Schema({
     verified: {type: Boolean, default: false},
     customFields:[],
     account:Object,
-    target:Object
+    target:Object,
+    registeredOn:Object
 }, schemaOptions)
 
 
