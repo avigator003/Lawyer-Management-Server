@@ -8,7 +8,7 @@ const Subscription = new Schema({
   
   userId:{type:Schema.Types.ObjectId, ref:"User"},
 subscriptionRequested:String,
-requestGranted:Boolean
+requestGranted:String
 
 
 },schemaOptions)
