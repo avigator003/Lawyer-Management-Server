@@ -38,7 +38,7 @@ exports.deleteSubscription = (req, res) => {
 //Show all Tickets
 exports.showAll= (req, res) => {
 
-    Subscription.find({}).
+    Subscription.find({}).populate("userId")
         then(data => {
             res.status(200).json({status: true, message:"tickets fetched", data})
 
