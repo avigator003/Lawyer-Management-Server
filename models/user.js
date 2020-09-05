@@ -19,7 +19,8 @@ const User = new Schema({
     customFields:[],
     account:Object,
     target:Object,
-    registeredOn:Object
+    registeredOn:Object,
+    subscriptionEndOn:Object
 }, schemaOptions)
 
 
