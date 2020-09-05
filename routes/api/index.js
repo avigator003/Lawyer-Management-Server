@@ -19,6 +19,8 @@ const account = require("./accounts")
 const support = require("./support")
 const Communication = require("./communication")
 const Notes = require("./notes")
+const Subscription = require("./subscription")
+
 
 
 router.use('/contactus', contactus)
@@ -41,6 +43,8 @@ router.use('/account', account)
 router.use('/ticket', support)
 router.use('/communication', Communication)
 router.use('/notes', Notes)
+router.use('/subscription', Subscription)
+
 
 
 
