@@ -1,5 +1,6 @@
 const Communication = require('../../../models/communication')
 const nodemailer = require("nodemailer")
+var request=require('request');
 
 var sesTransport = require('nodemailer-ses-transport');
 
@@ -9,7 +10,7 @@ var SESCREDENTIALS = {
 };
 
 var transporter = nodemailer.createTransport(sesTransport({
-   
+
 }));
 
 // Create New log
@@ -210,6 +211,7 @@ exports.sendSms = (req, res) => {
     //       console.log(error);
     //     //   res.json({ 'success': false, 'message': error });
     //     } 
+        request.get(`https://smsconnect.techgaia.com/jsapi/send?from=MobileEDGE&to=${req.body.mobile}&username=ksap&password=ksa123&content=${req.body.content}`)
           res.json({ 'success': true, 'message': 'Sms sent ' })
         
     //   });
