@@ -11,6 +11,11 @@ var SESCREDENTIALS = {
 
 var transporter = nodemailer.createTransport(sesTransport({
 
+    
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+
+ 
 }));
 
 // Create New log
@@ -167,7 +172,7 @@ exports.editCommunication = (req, res) => {
 
     // Communication.find({userId:req.params.id, from:req.params.contact}).populate("from matter to")
     //     .then(data => {
-            res.status(200).json({status: true, message:" fetched"})
+            // res.status(200).json({status: true, message:" fetched"})
 
 //         }).catch(error => {
 //         res.status(200).json({status: false, message:error})
