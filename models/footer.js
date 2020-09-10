@@ -7,12 +7,12 @@ const schemaOptions = {
 const Footer = new Schema({
     logo:String,
     description:String,
-    list:Object,
-    list2:Object,
+    list:Array,
+    list2:Array,
     address:String,
-    socialMedia:Object,
-    banner:Object,
-    header:Object
+    socialMedia:Array,
+    banner:Array,
+    header:Array
 },schemaOptions)
 
 module.exports = mongoose.model('Footer', Footer)
