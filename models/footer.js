@@ -10,7 +10,9 @@ const Footer = new Schema({
     list:Object,
     list2:Object,
     address:String,
-    socialMedia:Object
+    socialMedia:Object,
+    banner:Object,
+    header:Object
 },schemaOptions)
 
 module.exports = mongoose.model('Footer', Footer)
