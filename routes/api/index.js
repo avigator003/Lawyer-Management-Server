@@ -20,7 +20,7 @@ const support = require("./support")
 const Communication = require("./communication")
 const Notes = require("./notes")
 const Subscription = require("./subscription")
-
+const Footer = require("./footer")
 
 
 router.use('/contactus', contactus)
@@ -44,7 +44,7 @@ router.use('/ticket', support)
 router.use('/communication', Communication)
 router.use('/notes', Notes)
 router.use('/subscription', Subscription)
-
+router.use("/footer", Footer)
 
 
 
