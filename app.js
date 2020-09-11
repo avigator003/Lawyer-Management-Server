@@ -27,7 +27,7 @@ const corsOptions = {
     credentials: true,
   };
   
-app.use(cors({origin:"http://precedentonline.com"}));
+app.use(cors(corsOptions));
 
 // parse JSON and url-encoded query
 app.use(bodyParser.urlencoded({extended: false}))
