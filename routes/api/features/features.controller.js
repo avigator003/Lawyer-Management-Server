@@ -7,6 +7,8 @@ exports.createList = (req, res) => {
     let feature = new Features()
     feature.title = req.body.title
     feature.description = req.body.description
+    feature.logo = req.body.logo
+
   
 
         feature.save().then(data => {
