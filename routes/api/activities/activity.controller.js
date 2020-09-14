@@ -30,11 +30,25 @@ exports.deleteActivity = (req, res) => {
 
 //Show all 
 exports.showAll = (req, res) => {
+    // .populate("user").populate([{
+    //     path: 'matter',
+    //     model: 'Matters',
+    //     populate: {
+    //       path: 'client',
+    //       model: 'Contacts'
+    //     }}]).
 
-    Activity.find({}).populate("user").
-        then(data => {
+    Activity.find({})
+        .then(data => {
+
+
+            var b = data.map(key => key['matter'])
+var c = {}
+b.map(elt => c[elt] = data.filter(k => k.matter == elt))
+// console.log(c)
+
             res.status(200).json({status: true, message:"Activity fetched", data})
-
+            // let a = [{ message: 'This is a test', from_user_id: 123, to_user_id: 567 }, { message: 'Another test.', from_user_id: 123, to_user_id: 567 }, { message: 'A third test.', from_user_id: '456', to_user_id: 567 }]
         }).catch(error => {
         res.status(200).json({status: false, message:error})
 
@@ -67,6 +81,29 @@ exports.viewSpecific = (req, res) => {
         }}]).
         then(data => {
             res.status(200).json({status: true, message:"Activity fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+//fetch activities for bill
+exports.viewSpecificForBill = (req, res) => {
+
+    Activity.find({userId:req.params.id}).populate("user").populate([{
+        path: 'matter',
+        model: 'Matters',
+        populate: {
+          path: 'client',
+          model: 'Contacts'
+        }}]).
+        then(data => {
+
+            var b = data.map(key => key['matter']['client']["_id"])
+var c = {}
+b.map(elt => c[elt] = data.filter(k => k.matter.client._id == elt))
+            res.status(200).json({status: true, message:"Activity fetched", c})
 
         }).catch(error => {
         res.status(200).json({status: false, message:error})
