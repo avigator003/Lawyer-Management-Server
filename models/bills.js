@@ -11,6 +11,7 @@ const Bills = new Schema({
   destination:{type:Schema.Types.ObjectId, ref:"Account"},
   ReferenceId:String,
   userId:{type:Schema.Types.ObjectId, ref:"User"},
+  matter:{type:Schema.Types.ObjectId, ref:"Matters"},
 
 
 },schemaOptions)
