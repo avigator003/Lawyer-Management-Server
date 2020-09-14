@@ -16,6 +16,9 @@ router.get("/bill/showall", controller.showAllSaveBill)
 router.post("/bill/edit/:id", controller.editBillsSaveBill)
 router.get("/bill/view/:id", controller.viewBillsSaveBill)
 router.get("/bill/viewforuser/:id", controller.viewSpecificSaveBill)
+router.get("/bill/viewforuser/:id/:matter", controller.viewSpecificSaveBillForMatter)
+
+
 router.get("/bill/viewforcontact/:id/:contact", controller.viewSpecificSaveBillClient)
 
 
