@@ -9,6 +9,8 @@ router.get("/showall", controller.showAll)
 router.get("/view/:id", controller.view)
 router.get("/viewforuser/:id", controller.viewSpecific)
 router.get("/viewformatter/:id/:matter", controller.viewSpecificForMatter)
+router.get("/viewforbill/:id", controller.viewSpecificForBill)
+
 router.post("/edit/:id", controller.editActivity)
 
 
