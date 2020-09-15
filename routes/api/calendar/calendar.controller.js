@@ -1,4 +1,81 @@
 const Event = require("../../../models/calendar");
+const momentT = require("moment-timezone")
+const moment = require("moment")
+const nodemailer = require("nodemailer")
+var request=require('request');
+
+var sesTransport = require('nodemailer-ses-transport');
+
+var SESCREDENTIALS = {
+  accessKeyId : "accesskey" ,
+  secretAccessKey : "secretkey"
+};
+
+var transporter = nodemailer.createTransport(sesTransport({
+
+    
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+
+ 
+}));
+//Send emails
+exports.sendMails = (req, res) => {
+  var timeZones = momentT.tz.names();
+  let date = moment(new Date()).format("MM/DD/YYYY")
+  console.log(moment().tz("Europe/London").format("hh:mm A").toString())
+  if("11:10 PM" === moment().tz("Europe/London").format("hh:mm A").toString()){
+    console.log("true")
+  }
+  // console.log({date})
+  // let finalDate = moment("9/11/2020 10:00:00").format("MM/DD/YYYY")
+  // console.log({finalDate})
+  var todaysEvent;
+  Event.find({}).populate("userId")
+.then((data) => {
+  
+  // data.map(event => {
+    todaysEvent = data.filter(evnt => {
+      // let evntDate = evnt.startTime;
+      // console.log({evntDate})
+
+     if(evnt.startTime){
+      let evntDate = evnt.startTime.toString().replace(/,/g,"").slice(0, -1);
+
+      // evntDate
+      // evntDate
+      console.log(evnt.startTime)
+      console.log({evntDate})
+      console.log({date})
+      var fin = moment(evntDate).format("MM/DD/YYYY")
+      console.log({fin})
+      return  evnt.userId && fin === date && evnt.notification
+     }
+    }
+    )
+    
+    todaysEvent.map(event => {
+      console.log(moment("2:25:07 pm", "HH:mm:ss a").tz(event.location).format("hh:mm A"))
+      console.log(moment().tz(event.location).format("hh:mm A"))
+    // if(event.timeForReminder === moment().tz(event.location).format("hh:mm A")){
+    //   console.log("true")
+    // }
+    
+  })
+    res.status(200).json({ status: true, message: "Events fetched", todaysEvent, data });
+  // })
+  console.log({todaysEvent})
+
+}
+)
+// })
+// .catch((error) => {
+//   res.status(200).json({ status: false, message: error });
+// });
+
+}
+
+
 
 // Create New List
 exports.createCalendar = (req, res) => {
