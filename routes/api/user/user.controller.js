@@ -3,6 +3,23 @@ const config = require("../../../config")
 const nodemailer = require("nodemailer")
 const crypto = require('crypto')
 
+var request=require('request');
+
+var sesTransport = require('nodemailer-ses-transport');
+
+var SESCREDENTIALS = {
+  accessKeyId : "accesskey" ,
+  secretAccessKey : "secretkey"
+};
+
+var transporter = nodemailer.createTransport(sesTransport({
+
+    
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+
+ 
+}));
 
 
 exports.count = (req, res) => {
@@ -79,21 +96,21 @@ exports.resetpassword = (req, res) => {
           if(!user){
             res.status(404).json({ status: false, message: 'No user found' });
           } else {
-            var transporter = nodemailer.createTransport({
-              service: 'gmail',
-              auth: {
-                user: 'anas3rde@gmail.com',
-                pass: '8123342590'
-              }
-            });
+
+
+       
+            
           
-              var url = "https://distracted-rosalind-719c41.netlify.app" +'/setpassword/?token='+user._id;
+
+          
+          
+              var url = "https://precedentonline.com" +'/setpassword/?token='+user._id;
             
             var userEmail = user.emailAddress;
             var emailText = 'please click on the below link for the forget password link';
             emailText += '<p><a href="'+url+'">click here</a>';
             var mailOptions = {
-              from: 'thirdessentials',
+              from: 'admin@precedentonline.com',
               to: userEmail,
               subject: 'Forget Password Link',
               html: emailText
