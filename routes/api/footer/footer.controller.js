@@ -70,7 +70,7 @@ exports.editFooter = (req, res) => {
 
 //upload
 exports.upload= (req, res) => {
-// console.log(req.file)
+console.log(req.file)
     // Footer.findOneAndUpdate(req.params.id, {$set:{logo:req.file.path}} ).
         // then(data => {
             // res.status(200).json({status: true, message:"image uploaded", data})
