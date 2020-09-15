@@ -150,7 +150,7 @@ exports.editCommunication = (req, res) => {
       var emailText = 'Please click on the link below to verify your Account';
     //   emailText += '<p><a href="'+url+'">click here</a>';
       var mailOptions = {
-        from: 'anas3rde@gmail.com',
+        from: 'admin@precedentonline.com',
         to: req.body.to,
         subject: req.body.subject,
         html: req.body.text
