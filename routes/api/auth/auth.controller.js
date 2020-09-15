@@ -1,6 +1,25 @@
 const jwt = require('jsonwebtoken')
 const User = require('../../../models/user')
 const nodemailer = require("nodemailer")
+
+var request=require('request');
+
+var sesTransport = require('nodemailer-ses-transport');
+
+var SESCREDENTIALS = {
+  accessKeyId : "accesskey" ,
+  secretAccessKey : "secretkey"
+};
+
+var transporter = nodemailer.createTransport(sesTransport({
+
+    
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+
+ 
+}));
+
 /*
     POST /api/auth/register
     {
@@ -45,21 +64,14 @@ exports.register = (req, res) => {
     const count = (user) => {
         console.log({user})
 
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'anas3rde@gmail.com',
-              pass: '8123342590'
-            }
-          });
-        
-            var url = "https://distracted-rosalind-719c41.netlify.app" +'/verified/?token='+user._id;
+      
+            var url = "https://precedentonline.com" +'/verified/?token='+user._id;
           
           var userEmail = user.emailAddress;
           var emailText = 'Please click on the link below to verify your Account';
           emailText += '<p><a href="'+url+'">click here</a>';
           var mailOptions = {
-            from: 'thirdessentials',
+            from: 'admin@precedentonline.com',
             to: userEmail,
             subject: 'Verify Your Account',
             html: emailText
