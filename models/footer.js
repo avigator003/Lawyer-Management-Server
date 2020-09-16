@@ -13,7 +13,8 @@ const Footer = new Schema({
     socialMedia:Array,
     banner:Array,
     header:Array,
-    footer:String
+    footer:String,
+    headerLogo:String
 },schemaOptions)
 
 module.exports = mongoose.model('Footer', Footer)
