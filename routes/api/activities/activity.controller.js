@@ -106,7 +106,7 @@ b.map(elt => c[elt] = data.filter(k => k.matter.client._id == elt))
             res.status(200).json({status: true, message:"Activity fetched", c})
 
         }).catch(error => {
-        res.status(200).json({status: false, message:error})
+        res.status(200).json({status: false, message:error, c:{}})
 
         })
 }
