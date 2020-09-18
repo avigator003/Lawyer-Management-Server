@@ -10,6 +10,7 @@ const Bills = new Schema({
   paymentDate:Date,
   destination:{type:Schema.Types.ObjectId, ref:"Account"},
   ReferenceId:String,
+  billUrl:String,
   userId:{type:Schema.Types.ObjectId, ref:"User"},
   matter:{type:Schema.Types.ObjectId, ref:"Matters"},
 
