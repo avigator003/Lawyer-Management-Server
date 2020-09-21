@@ -57,9 +57,26 @@ exports.sendMails = (req, res) => {
     todaysEvent.map(event => {
       console.log(moment("2:25:07 pm", "HH:mm:ss a").tz(event.location).format("hh:mm A"))
       console.log(moment().tz(event.location).format("hh:mm A"))
-    // if(event.timeForReminder === moment().tz(event.location).format("hh:mm A")){
-    //   console.log("true")
-    // }
+      if( moment().tz(event.location).format("hh:mm A").includes(event.timeForReminder) ){
+      var emailText = 'Please click on the link below to verify your Account';
+    //   emailText += '<p><a href="'+url+'">click here</a>';
+      var mailOptions = {
+        from: 'admin@precedentonline.com',
+        to: event.userId.emailAddress,
+        subject: "You have an upcoming event | Case Management",
+        html: `You have an upcoming event - ${event.title} - ${event.description} - scheduled for -  ${event.startTime}`
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        //   res.json({ 'success': false, 'message': error });
+        } 
+          console.log("email sent");
+          // res.json({ 'success': true, 'message': 'email sent ' })
+        
+      });
+    }
     
   })
     res.status(200).json({ status: true, message: "Events fetched", todaysEvent, data });
