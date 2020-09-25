@@ -15,6 +15,9 @@ const multer = require('multer');
  
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
+  params:{
+    resource_type: "auto"
+  }
 });
 const parser = multer({ storage: storage });
 
