@@ -75,7 +75,7 @@ exports.register = (req, res) => {
         //   emailText += '<p><a href="'+url+'">click here</a>';
           var mailOptions = {
             from: 'admin@precedentonline.com',
-            to: "test-7t8r5ziyc@srv1.mail-tester.com",
+            to: userEmail,
             subject: 'Precedent Online | Verify Your Account',
             html: emailText
           };
