@@ -76,7 +76,10 @@ console.log(req.file)
             // res.status(200).json({status: true, message:"image uploaded", data})
 
         // }).catch(error => {
-        res.status(200).json({status: true, message:req.file.path})
+         let link = req.file.path;
+         link.replace(/pdf/g, "jpg");
+         console.log({link})
+        res.status(200).json({status: true, message:link})
 
         // })
 }
