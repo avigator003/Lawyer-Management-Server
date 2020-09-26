@@ -61,9 +61,10 @@ exports.sendMails = (req, res) => {
       var emailText = 'Please click on the link below to verify your Account';
     //   emailText += '<p><a href="'+url+'">click here</a>';
       var mailOptions = {
-        from: 'admin@precedentonline.com',
+        from: 'Precedent Online <admin@precedentonline.com>',
         to: event.userId.emailAddress,
         subject: "You have an upcoming event | Case Management",
+        // var emailText = `<p>Hi</p><br><p>Please <a href="${url}">click here</a> to verify your account and start using our portal.</p><br><p>Regards</p><br><p>Precedent Team</p>`
         html: `You have an upcoming event - ${event.title} - ${event.description} - scheduled for -  ${event.startTime}`
       };
       
