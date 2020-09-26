@@ -68,13 +68,13 @@ exports.register = (req, res) => {
             var url = "https://precedentonline.com" +'/verified/?token='+user._id;
           
           var userEmail = user.emailAddress;
-          var emailText = `<p>Hi</p><br><p>Please <a href="${url}">click here</a> to verify your account and start using our portal.</p><p>Regards</p>Precedent Team`
+          var emailText = `<p>Hi ${user.firstName}</p><br><p>Please <a href="${url}">click here</a> to verify your account and start using our portal.</p><p>Regards</p>Precedent Team`
 
           
     
         //   emailText += '<p><a href="'+url+'">click here</a>';
           var mailOptions = {
-            from: 'admin@precedentonline.com',
+            from: 'Precedent Online <admin@precedentonline.com>',
             to: userEmail,
             subject: 'Precedent Online | Verify Your Account',
             html: emailText
