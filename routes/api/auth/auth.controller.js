@@ -70,7 +70,7 @@ exports.register = (req, res) => {
           var userEmail = user.emailAddress;
           var emailText = `<p>Hi ${user.firstName}</p><br><p>Please <a href="${url}">click here</a> to verify your account and start using our portal.</p><p>Regards</p>Precedent Team`
 
-          
+    
     
         //   emailText += '<p><a href="'+url+'">click here</a>';
           var mailOptions = {
