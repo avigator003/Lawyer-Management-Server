@@ -110,7 +110,7 @@ exports.resetpassword = (req, res) => {
             var emailText = 'please click on the below link for the forget password link';
             emailText += '<p><a href="'+url+'">click here</a>';
             var mailOptions = {
-              from: 'admin@precedentonline.com',
+            from: 'Precedent Online <admin@precedentonline.com>',
               to: userEmail,
               subject: 'Forget Password Link',
               html: emailText
