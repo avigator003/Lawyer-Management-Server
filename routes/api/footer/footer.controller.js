@@ -77,9 +77,9 @@ console.log(req.file)
 
         // }).catch(error => {
          let link = req.file.path;
-         link.replace(/pdf/g, "jpg");
+         let link2 = link.replace(/pdf/g, "jpg");
          console.log({link})
-        res.status(200).json({status: true, message:link})
+        res.status(200).json({status: true, message:link2})
 
         // })
 }
