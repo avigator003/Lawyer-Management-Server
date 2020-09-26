@@ -107,8 +107,10 @@ exports.resetpassword = (req, res) => {
               var url = "https://precedentonline.com" +'/setpassword/?token='+user._id;
             
             var userEmail = user.emailAddress;
-            var emailText = 'please click on the below link for the forget password link';
+            // var emailText = 'please click on the below link for the forget password link';
             emailText += '<p><a href="'+url+'">click here</a>';
+          var emailText = `<p>Hi ${user.firstName}</p><p>Please <a href="${url}">click here</a> to reset your password and continue using our portal</p><p>Regards</p>Precedent Team`
+
             var mailOptions = {
             from: 'Precedent Online <admin@precedentonline.com>',
               to: userEmail,
