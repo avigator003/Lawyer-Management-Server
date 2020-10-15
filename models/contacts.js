@@ -20,8 +20,8 @@ const Contact = new Schema({
     billingPaymentProfile:String,
     billingCustomRate:String,
     billingClientId:String,
-    userId:{type:Schema.Types.ObjectId, ref:"User"}
-
+    userId:{type:Schema.Types.ObjectId, ref:"User"},
+    trustAmount:String
   
 
 
