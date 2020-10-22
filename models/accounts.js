@@ -16,7 +16,7 @@ const Account = new Schema({
     openingBalance:String,
     defaultAccount:{type:Boolean, default: false},
   userId:{type:Schema.Types.ObjectId, ref:"User"},
-contactId:{type:Schema.Types.ObjectId, ref:"Contact"}
+contactId:{type:Schema.Types.ObjectId, ref:"Contacts"}
 
 },schemaOptions)
 
