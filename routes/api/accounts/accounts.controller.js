@@ -60,7 +60,7 @@ exports.view = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    Account.find({userId:req.params.id}).
+    Account.find({userId:req.params.id}).populate("contactId").
         then(data => {
             res.status(200).json({status: true, message:"Account fetched", data})
 
