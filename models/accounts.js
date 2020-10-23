@@ -14,6 +14,7 @@ const Account = new Schema({
     swiftCode:String,
     currency:String,
     openingBalance:String,
+    balance:String,
     defaultAccount:{type:Boolean, default: false},
   userId:{type:Schema.Types.ObjectId, ref:"User"},
 contactId:{type:Schema.Types.ObjectId, ref:"Contacts"}
