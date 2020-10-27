@@ -7,7 +7,7 @@ const Logs = new Schema({
     before:String,
     after:String,
   userId:{type:Schema.Types.ObjectId, ref:"User"},
-matterId:{type:Schema.Types.ObjectId, ref:"Matter"},
+matterId:{type:Schema.Types.ObjectId, ref:"Matters"},
 accountId:{type:Schema.Types.ObjectId, ref:"Account"}
 },schemaOptions)
 
