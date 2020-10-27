@@ -79,3 +79,15 @@ exports.viewSpecific = (req, res) => {
 
         })
 }
+
+exports.viewSpecificForAccount = (req, res) => {
+
+    logs.find({userId:req.params.id, accountId:req.params.account}).populate("matterId").
+        then(data => {
+            res.status(200).json({status: true, message:"logs fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
