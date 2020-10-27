@@ -7,8 +7,8 @@ const Logs = new Schema({
     before:String,
     after:String,
   userId:{type:Schema.Types.ObjectId, ref:"User"},
-matterId:{type:Schema.Types.ObjectId, ref:"Matter"}
-
+matterId:{type:Schema.Types.ObjectId, ref:"Matter"},
+accountId:{type:Schema.Types.ObjectId, ref:"Account"}
 },schemaOptions)
 
 module.exports = mongoose.model('Logs', Logs)
