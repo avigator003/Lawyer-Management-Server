@@ -21,9 +21,12 @@ const Communication = require("./communication")
 const Notes = require("./notes")
 const Subscription = require("./subscription")
 const Footer = require("./footer")
+const logs = require("./logs")
+
 
 
 router.use('/contactus', contactus)
+router.use('/logs', logs)
 router.use('/blogs', blogs)
 router.use('/features', features)
 router.use('/plans', plans)
