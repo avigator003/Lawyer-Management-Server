@@ -5,7 +5,7 @@ const config = require('../config')
 const Plans = new Schema({
     planName: String,
     list: Array,
-    price: String
+    price: String,
 })
 
 module.exports = mongoose.model('Plans', Plans)

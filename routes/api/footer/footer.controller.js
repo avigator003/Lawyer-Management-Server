@@ -1,6 +1,5 @@
 const Footer = require('../../../models/footer')
 
-
 // Create New List
 exports.create = (req, res) => {
 
@@ -57,14 +56,13 @@ exports.viewFooter = (req, res) => {
 
 //Edit blog
 exports.editFooter = (req, res) => {
-
     Footer.findByIdAndUpdate(req.params.id, req.body, {new: true}).
         then(data => {
+            
             res.status(200).json({status: true, message:"Footer updated", data})
 
         }).catch(error => {
-        res.status(400).json({status: false, message:error})
-
+            res.status(400).json({status: false, message:error})
         })
 }
 

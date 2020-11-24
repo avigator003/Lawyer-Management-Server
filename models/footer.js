@@ -15,7 +15,10 @@ const Footer = new Schema({
     header:Array,
     footer:String,
     headerLogo:String, 
-    faq:Array
+    faq:Array,
+    subscriptionTitle : String,
+    featuresTitle : String,
+    blogTitle : String,
 },schemaOptions)
 
 module.exports = mongoose.model('Footer', Footer)
