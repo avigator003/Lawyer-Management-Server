@@ -4,8 +4,6 @@ const Footer = require('../../../models/footer')
 exports.create = (req, res) => {
 
     let footer = new Footer(req.body)
-  
-
         footer.save().then(data => {
             res.status(200).json({status: true, message:"footer created", data})
 

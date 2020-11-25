@@ -22,7 +22,7 @@ const Notes = require("./notes")
 const Subscription = require("./subscription")
 const Footer = require("./footer")
 const logs = require("./logs")
-
+const aboutus = require('./aboutUs')
 
 
 router.use('/contactus', contactus)
@@ -48,7 +48,7 @@ router.use('/communication', Communication)
 router.use('/notes', Notes)
 router.use('/subscription', Subscription)
 router.use("/footer", Footer)
-
+router.use('/aboutus/', aboutus)
 
 
 module.exports = router
